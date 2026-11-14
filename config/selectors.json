@@ -1,0 +1,18 @@
+{
+  "version": "2026-11-14",
+  "comment": "Селекторы карточки Маркета. Меняются без перевыпуска расширения: расширение забирает файл раз в 12 часов и кэширует.",
+  "priceZone": ["[data-zone-name=\"price\"]"],
+  "priceCurrent": [
+    "[data-auto=\"snippet-price-current\"]",
+    "[data-auto=\"price-current\"]",
+    "[data-auto=\"price-value\"]",
+    "[data-auto=\"price\"]"
+  ],
+  "priceOld": ["[data-auto=\"snippet-price-old\"]", "[data-auto=\"price-old\"]"],
+  "title": ["[data-auto=\"productCardTitle\"]", "h1"],
+  "shopBlock": ["[data-auto=\"shop-info-block\"]"],
+  "shopTitle": ["[data-auto=\"shop-info-title\"]"],
+  "shopLink": ["[data-auto=\"shop-info-link\"]"],
+  "offersZone": ["[data-zone-name=\"morePrices\"]"],
+  "offersLink": ["[data-auto=\"offersEntrypoint\"]"]
+}
