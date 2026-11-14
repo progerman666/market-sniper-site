@@ -32,7 +32,7 @@
   <h2>Шаг 2. Пришлите подтверждение</h2>
   <p>Нажмите кнопку — откроется письмо с уже заполненной темой. Приложите скриншот перевода и укажите тариф (месяц или год).</p>
   <p>
-    <a class="btn btn-gold" id="mail" href="mailto:test@demo.ru?subject=Оплата%20Маркет-Снайпер">Отправить подтверждение</a>
+    <a class="btn btn-gold" id="mail" href="mailto:hello@gadget-nakhodki.ru?subject=Оплата%20Маркет-Снайпер">Отправить подтверждение</a>
   </p>
 
   <h2>Шаг 3. Активируйте ключ</h2>
@@ -53,7 +53,7 @@
   var params = new URLSearchParams(location.search);
   var plan = params.get('plan') === 'year' ? 'год' : 'месяц';
   var mail = document.getElementById('mail');
-  mail.href = 'mailto:test@demo.ru?subject=' + encodeURIComponent('Оплата Маркет-Снайпер — ' + plan);
+  mail.href = 'mailto:hello@gadget-nakhodki.ru?subject=' + encodeURIComponent('Оплата Маркет-Снайпер — ' + plan);
 
   fetch('api/plans.php')
     .then(function (r) { return r.json(); })
