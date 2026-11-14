@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Оплата — Маркет-Снайпер</title>
+<link rel="icon" href="img/icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="wrap header-inner">
+    <a class="logo" href="./"><img src="img/icon.png" alt=""> Маркет-Снайпер</a>
+    <nav><a href="index.html">На главную</a></nav>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <h1>Оплата и получение ключа</h1>
+
+  <p>Оплата проходит по СБП — переводите с любого банка, комиссии для вас нет. Ключ приходит на почту в течение 2 часов (обычно 10–15 минут).</p>
+
+  <div class="note" style="margin:18px 0">
+    Сейчас цена: <b><span data-price="month">199 ₽</span></b> за месяц или
+    <b><span data-price="year">1 990 ₽</span></b> за год (два месяца в подарок).
+  </div>
+
+  <h2>Шаг 1. Переведите сумму</h2>
+  <p>По СБП на номер <span class="kbd">+7 (___) ___-__-__</span> (получатель: ФИО, банк: ___). В комментарии укажите почту, на которую прислать ключ.</p>
+  <p style="font-size:13px;color:#6f87a6">Реквизиты заполнить перед публикацией: телефон для СБП, ФИО самозанятого, банк.</p>
+
+  <h2>Шаг 2. Пришлите подтверждение</h2>
+  <p>Нажмите кнопку — откроется письмо с уже заполненной темой. Приложите скриншот перевода и укажите тариф (месяц или год).</p>
+  <p>
+    <a class="btn btn-gold" id="mail" href="mailto:test@demo.ru?subject=Оплата%20Маркет-Снайпер">Отправить подтверждение</a>
+  </p>
+
+  <h2>Шаг 3. Активируйте ключ</h2>
+  <p>В ответном письме придёт ключ вида <span class="kbd">MS1.…</span>. Откройте расширение → поле «Ключ доступа» → «ОК». Полная версия включится сразу, переустанавливать ничего не нужно.</p>
+
+  <h2>Чек и возврат</h2>
+  <p>Чек самозанятого приходит на почту или в приложение «Мой налог» после оплаты. Если расширение не подошло — напишите в течение 7 дней, вернём деньги тем же способом, ключ аннулируем.</p>
+
+  <p style="margin-top:24px"><a href="offer.html">Публичная оферта</a> · <a href="privacy.html">Политика конфиденциальности</a></p>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Маркет-Снайпер. Самозанятый: ФИО, ИНН — заполнить перед публикацией.</div>
+</footer>
+
+<script>
+  // Подставляем актуальную цену и тариф из ссылки (?plan=year)
+  var params = new URLSearchParams(location.search);
+  var plan = params.get('plan') === 'year' ? 'год' : 'месяц';
+  var mail = document.getElementById('mail');
+  mail.href = 'mailto:test@demo.ru?subject=' + encodeURIComponent('Оплата Маркет-Снайпер — ' + plan);
+
+  fetch('api/plans.php')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      (data.plans || []).forEach(function (p) {
+        document.querySelectorAll('[data-price="' + p.plan + '"]').forEach(function (el) {
+          el.textContent = new Intl.NumberFormat('ru-RU').format(p.price) + ' ₽';
+        });
+      });
+    })
+    .catch(function () {});
+</script>
+</body>
+</html>
