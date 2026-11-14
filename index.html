@@ -1,17 +1,98 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Маркет-Снайпер — чистая прибыль на карточке Яндекс.Маркета</title>
-<meta name="description" content="Расширение для Edge показывает чистую прибыль продавца прямо на карточке товара Яндекс.Маркета: комиссия, доставка, реклама и что останется вам.">
+<title>Маркет-Снайпер — расширение для расчёта прибыли на Яндекс.Маркете</title>
+<meta name="description" content="Показывает чистую прибыль прямо на карточке товара Яндекс.Маркета: комиссия, доставка и реклама. Установка в Edge и Chrome за минуту, 7 дней бесплатно, дальше 199 ₽ в месяц.">
 <meta property="og:title" content="Маркет-Снайпер — чистая прибыль на карточке Яндекс.Маркета">
 <meta property="og:description" content="Цена, комиссия Маркета, доставка и реклама — и сколько останется вам. Прямо на карточке товара.">
-<meta property="og:image" content="img/badge.png">
+<meta property="og:image" content="https://sniper.gadget-nakhodki.ru/img/badge.png">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://sniper.gadget-nakhodki.ru/">
+<meta property="og:site_name" content="Маркет-Снайпер">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1f3a">
 <link rel="icon" href="img/icon.png">
 <link rel="canonical" href="https://sniper.gadget-nakhodki.ru/">
 <link rel="stylesheet" href="styles.css">
+<!-- Яндекс.Вебмастер и Google Search Console: раскомментируйте свой тег подтверждения прав. -->
+<!-- <meta name="yandex-verification" content="XXXXXXXXXXXXXX"> -->
+<!-- <meta name="google-site-verification" content="XXXXXXXXXXXXXX"> -->
+<script src="js/metrica.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Маркет-Снайпер",
+      "url": "https://sniper.gadget-nakhodki.ru/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "inLanguage": "ru-RU",
+      "description": "Расширение для Edge, Chrome и Яндекс.Браузера показывает чистую прибыль продавца прямо на карточке товара Яндекс.Маркета: комиссия, доставка, реклама и себестоимость.",
+      "featureList": [
+        "Чистая прибыль под ценой на карточке товара",
+        "Тарифы Маркета по категориям 32–53%",
+        "Свой склад, склад Маркета и быстрая доставка",
+        "Работает офлайн, данные хранятся в браузере"
+      ],
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "199",
+        "highPrice": "1990",
+        "priceCurrency": "RUB",
+        "offerCount": "2",
+        "url": "https://sniper.gadget-nakhodki.ru/buy.html"
+      },
+      "publisher": { "@type": "Organization", "name": "Маркет-Снайпер", "url": "https://sniper.gadget-nakhodki.ru/" }
+    },
+    {
+      "@type": "WebSite",
+      "name": "Маркет-Снайпер",
+      "url": "https://sniper.gadget-nakhodki.ru/",
+      "inLanguage": "ru-RU"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Нужно ли ИП или регистрация?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Для установки — нет. Покупка оформляется как обычная услуга, чек приходит от самозанятого. Данные карты мы не храним." }
+        },
+        {
+          "@type": "Question",
+          "name": "Какие данные вы собираете?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Расчёт и настройки хранятся только в браузере. На сервер уходит только запрос при активации ключа — чтобы проверить его срок. На сайте работает Яндекс.Метрика — обезличенная статистика посещений, как описано в политике конфиденциальности." }
+        },
+        {
+          "@type": "Question",
+          "name": "Работает ли без интернета?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Да. Ключ проверяется по подписи локально, поэтому расчёт прибыли работает и при плохой связи." }
+        },
+        {
+          "@type": "Question",
+          "name": "Что будет, когда закончится пробный период?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Расширение не отключится: останется базовый расчёт по ставкам 10% и 100 ₽ плюс поле для ключа. После оплаты всё возвращается, настройки не теряются." }
+        },
+        {
+          "@type": "Question",
+          "name": "Если не подошло — вернёте деньги?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Да, в течение 7 дней после оплаты. Напишите на почту из реквизитов — вернём тем же способом, ключ аннулируем." }
+        },
+        {
+          "@type": "Question",
+          "name": "Поддерживается ли Яндекс.Браузер?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Да, он на том же движке: browser://extensions → «Режим разработчика» → «Загрузить распакованное»." }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -21,6 +102,7 @@
     <nav>
       <a href="#how">Как работает</a>
       <a href="#price">Цена</a>
+      <a href="kalkulyator-pribyli.html">Калькулятор</a>
       <a href="#install">Установка</a>
       <a href="#faq">Вопросы</a>
     </nav>
@@ -36,6 +118,7 @@
       <p>Расширение считает, сколько вы реально заработаете с товара: минус комиссия Маркета, доставка и реклама. Прямо на странице — без таблиц и калькуляторов.</p>
       <div class="hero-actions">
         <a class="btn btn-gold" id="cta-main" href="download/market-sniper-0.3.0.zip">Скачать бесплатно</a>
+        <a class="btn btn-ghost" href="kalkulyator-pribyli.html">Калькулятор прибыли</a>
         <a class="btn btn-ghost" href="#price">Сколько стоит</a>
       </div>
       <div class="hero-note">7 дней полного доступа, без карты и регистрации. Браузер: Microsoft Edge, Chrome, Яндекс.Браузер. <span id="cta-note">Скоро в каталоге Edge — установка в один клик.</span></div>
@@ -83,6 +166,15 @@
         <h3>Подставьте свои ставки</h3>
         <p>В окне расширения укажите категорию, доставку и рекламу — расчёт пересчитается сразу.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="calc-teaser">
+    <h2>Посчитайте прибыль до установки</h2>
+    <p class="lead">Бесплатный калькулятор: цена, категория, доставка и реклама — и вы увидите чистую прибыль с одной продажи и маржу. Без регистрации, по официальным тарифам Маркета.</p>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="kalkulyator-pribyli.html">Открыть калькулятор</a>
+      <a class="btn btn-ghost" href="#price">Сколько стоит расширение</a>
     </div>
   </section>
 
@@ -164,7 +256,7 @@
     </details>
     <details>
       <summary>Какие данные вы собираете?</summary>
-      <p>Никакие. Расчёт и настройки хранятся только в браузере. На сервер уходит только запрос при активации ключа — чтобы проверить его срок.</p>
+      <p>Расчёт и настройки расширения хранятся только в браузере — на сервер уходит лишь запрос при активации ключа, чтобы проверить его срок. На этом сайте работает Яндекс.Метрика: обезличенная статистика посещений и кликов, без передачи данных о ваших товарах. Подробнее — в <a href="privacy.html">политике конфиденциальности</a>.</p>
     </details>
     <details>
       <summary>Работает ли без интернета?</summary>
@@ -191,6 +283,7 @@
     <div class="links">
       <a href="privacy.html">Политика конфиденциальности</a>
       <a href="offer.html">Публичная оферта</a>
+      <a href="kalkulyator-pribyli.html">Калькулятор прибыли</a>
       <a href="buy.html">Оплата</a>
       <a href="mailto:goinslims@gmail.com">goinslims@gmail.com</a>
     </div>
@@ -233,4 +326,3 @@
 
 </body>
 </html>
-
