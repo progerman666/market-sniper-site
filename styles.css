@@ -103,6 +103,12 @@ footer .links { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 10px; 
 .paybox-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
 .paybox-note { font-size: 12px; color: #7ee2a8; min-height: 16px; }
 
+.qr-block { display: flex; gap: 18px; align-items: center; margin: 22px 0; padding: 18px; border: 1px dashed var(--line); border-radius: 14px; flex-wrap: wrap; }
+.qr-box { width: 168px; height: 168px; border-radius: 12px; background: #fff; color: #0b1f3a; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 13px; font-weight: 600; padding: 8px; }
+.qr-box img { width: 100%; height: 100%; object-fit: contain; border-radius: 10px; }
+.qr-hint { font-size: 11px; font-weight: 400; color: #6f87a6; }
+.qr-text { flex: 1; min-width: 220px; }
+
 .kbd { background: #0a1a30; border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: 13px; color: #cfe0f5; }
 
 @media (max-width: 860px) {
