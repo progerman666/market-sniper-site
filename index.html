@@ -35,10 +35,10 @@
       <h1>Чистая прибыль на карточке Яндекс.Маркета</h1>
       <p>Расширение считает, сколько вы реально заработаете с товара: минус комиссия Маркета, доставка и реклама. Прямо на странице — без таблиц и калькуляторов.</p>
       <div class="hero-actions">
-        <a class="btn btn-gold" href="download/market-sniper-0.3.0.zip">Скачать бесплатно</a>
+        <a class="btn btn-gold" id="cta-main" href="download/market-sniper-0.3.0.zip">Скачать бесплатно</a>
         <a class="btn btn-ghost" href="#price">Сколько стоит</a>
       </div>
-      <div class="hero-note">7 дней полного доступа, без карты и регистрации. Браузер: Microsoft Edge, Chrome, Яндекс.Браузер.</div>
+      <div class="hero-note">7 дней полного доступа, без карты и регистрации. Браузер: Microsoft Edge, Chrome, Яндекс.Браузер. <span id="cta-note">Скоро в каталоге Edge — установка в один клик.</span></div>
     </div>
     <div class="hero-shot">
       <img src="img/badge.png" alt="Блок «Чистая прибыль» под ценой товара на Яндекс.Маркете">
@@ -129,7 +129,15 @@
 
   <section class="section" id="install">
     <h2>Установка</h2>
-    <p class="lead">Пока расширение ставится вручную — так же, как любой внутренний инструмент. Публикация в каталоге Edge Add-ons на подходе.</p>
+    <div class="store-cta" id="store-cta">
+      <div class="store-cta-text">
+        <b>Каталог Microsoft Edge</b>
+        <span id="store-cta-note">Релиз на проверке — кнопка появится сразу после публикации.</span>
+      </div>
+      <a class="btn btn-gold" id="store-btn" href="#install-manual">Установка вручную</a>
+    </div>
+    <p class="lead" id="install-lead">Пока каталог не открыт, расширение ставится вручную — как любой внутренний инструмент.</p>
+    <div id="install-manual">
     <div class="steps">
       <div class="step">
         <h3>Скачайте и распакуйте</h3>
@@ -143,6 +151,7 @@
         <h3>Загрузите папку</h3>
         <p>«Загрузить распакованное» → выберите папку, куда распаковали архив (внутри должен лежать <span class="kbd">manifest.json</span>).</p>
       </div>
+    </div>
     </div>
     <p class="hero-note">После установки откройте любую карточку товара на market.yandex.ru — плашка появится под ценой. Если нет: нажмите «Обновить» у расширения и перезагрузите страницу.</p>
   </section>
@@ -183,7 +192,7 @@
       <a href="privacy.html">Политика конфиденциальности</a>
       <a href="offer.html">Публичная оферта</a>
       <a href="buy.html">Оплата</a>
-      <a href="mailto:hello@gadget-nakhodki.ru">hello@gadget-nakhodki.ru</a>
+      <a href="mailto:goinslims@gmail.com">goinslims@gmail.com</a>
     </div>
     <div>Самозанятый: Воробьев Евгений Александрович, ИНН 422194497805. © 2026 Маркет-Снайпер.</div>
     <div style="margin-top:6px">Яндекс.Маркет — товарный знак ООО «ЯНДЕКС». Расширение не является продуктом Яндекса.</div>
@@ -191,6 +200,24 @@
 </footer>
 
 <script>
+  // Как только расширение опубликуют в каталоге Edge — вставить сюда ссылку вида
+  // https://microsoftedge.microsoft.com/addons/detail/<id>
+  var EDGE_STORE_URL = '';
+
+  if (EDGE_STORE_URL) {
+    var ctaMain = document.getElementById('cta-main');
+    ctaMain.href = EDGE_STORE_URL;
+    ctaMain.textContent = 'Установить из каталога Edge';
+    document.getElementById('cta-note').textContent = 'Установка в один клик и автообновления.';
+
+    var storeBtn = document.getElementById('store-btn');
+    storeBtn.href = EDGE_STORE_URL;
+    storeBtn.textContent = 'Открыть каталог Edge';
+    document.getElementById('store-cta-note').textContent = 'Установка в один клик, обновления приходят сами.';
+    document.getElementById('install-lead').textContent =
+      'Если каталог недоступен (например, из-за политики организации) — установите вручную по шагам ниже.';
+  }
+
   // Цены берём из одного места — api/plans.php. Если сервер недоступен, остаются значения из разметки.
   fetch('api/plans.php')
     .then(function (r) { return r.json(); })

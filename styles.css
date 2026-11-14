@@ -109,6 +109,10 @@ footer .links { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 10px; 
 .qr-hint { font-size: 11px; font-weight: 400; color: #6f87a6; }
 .qr-text { flex: 1; min-width: 220px; }
 
+.store-cta { display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; background: rgba(245,196,81,.08); border: 1px solid rgba(245,196,81,.35); border-radius: 14px; padding: 16px 20px; margin: 6px 0 18px; }
+.store-cta-text { display: flex; flex-direction: column; gap: 2px; font-size: 14px; color: var(--muted); }
+.store-cta-text b { color: #fff; font-size: 15px; }
+
 .kbd { background: #0a1a30; border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: 13px; color: #cfe0f5; }
 
 @media (max-width: 860px) {

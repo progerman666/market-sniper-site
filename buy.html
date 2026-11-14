@@ -42,18 +42,19 @@
   <h2>Шаг 2. Пришлите подтверждение</h2>
   <p>Нажмите кнопку — откроется письмо с уже заполненной темой. Приложите скриншот перевода и укажите тариф (месяц или год).</p>
   <p>
-    <a class="btn btn-gold" id="mail" href="mailto:hello@gadget-nakhodki.ru?subject=Оплата%20Маркет-Снайпер">Отправить подтверждение</a>
+    <a class="btn btn-gold" id="mail" href="mailto:goinslims@gmail.com?subject=Оплата%20Маркет-Снайпер">Отправить подтверждение</a>
   </p>
 
   <div class="qr-block">
     <div class="qr-box" id="qr-box">
-      <!-- Сюда вставляется PNG с QR-кодом СБП из приложения Сбербанка -->
-      QR-код СБП<br><span class="qr-hint">появится здесь после загрузки img/sbp-qr.png</span>
+      <!-- Сюда подставляется img/sbp-qr.png (QR из приложения банка) -->
+      QR-код СБП<br><span class="qr-hint">появится, как только добавим картинку</span>
     </div>
     <div class="qr-text">
       <h3 style="color:#fff;font-size:16px;margin-bottom:6px">Ещё быстрее — по QR-коду</h3>
       <p style="font-size:14px;color:var(--muted);margin-bottom:10px">Откройте приложение банка → «Оплата по QR» → отсканируйте код. Номер и получатель подставятся сами — останется ввести сумму.</p>
-      <a class="btn btn-ghost btn-sm" id="tg" href="https://t.me/">Написать в Telegram</a>
+      <a class="btn btn-ghost btn-sm" id="max" href="https://web.max.ru/" target="_blank" rel="noopener">Написать в MAX — +7 923 493-26-88</a>
+      <div class="paybox-note" id="max-note"></div>
     </div>
   </div>
 
@@ -85,7 +86,7 @@
   function updateMail() {
     var mail = document.getElementById('mail');
     var body = 'Оплатил ' + fmt(amount) + ' (' + planName + '). Почта для ключа: ';
-    mail.href = 'mailto:hello@gadget-nakhodki.ru' +
+    mail.href = 'mailto:goinslims@gmail.com' +
       '?subject=' + encodeURIComponent('Оплата Маркет-Снайпер — ' + planName + ', ' + fmt(amount)) +
       '&body=' + encodeURIComponent(body);
   }
@@ -113,12 +114,20 @@
   renderAmount();
   updateMail();
 
-  // Telegram: ник заменить на свой — покупатель сразу пишет с готовым текстом
-  var TELEGRAM_NICK = 'market_sniper_help';
-  var tg = document.getElementById('tg');
-  tg.href = 'https://t.me/' + TELEGRAM_NICK + '?text=' + encodeURIComponent(
-    'Здравствуйте! Оплатил ' + fmt(amount) + ' (' + planName + ') за Маркет-Снайпер. Почта для ключа: '
-  );
+  // MAX: покупатель открывает мессенджер, номер копируется в буфер для поиска
+  var MAX_PHONE_PRETTY = '+7 923 493-26-88';
+  document.getElementById('max').addEventListener('click', function () {
+    var note = document.getElementById('max-note');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText('+79234932688').then(function () {
+        note.textContent = 'Номер скопирован — найдите нас в MAX по номеру ' + MAX_PHONE_PRETTY;
+      }, function () {
+        note.textContent = 'Найдите нас в MAX по номеру ' + MAX_PHONE_PRETTY;
+      });
+    } else {
+      note.textContent = 'Найдите нас в MAX по номеру ' + MAX_PHONE_PRETTY;
+    }
+  });
 
   // QR-код СБП: если в img/ лежит sbp-qr.png — показываем его вместо заглушки
   var qrImage = new Image();
