@@ -97,6 +97,12 @@ footer .links { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 10px; 
 
 .note { background: rgba(245,196,81,.08); border: 1px solid rgba(245,196,81,.35); border-radius: 12px; padding: 14px 16px; font-size: 14px; color: #f0d896; }
 
+.paybox { background: var(--navy-2); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin: 14px 0; display: grid; gap: 8px; }
+.paybox-row { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; color: var(--muted); }
+.paybox-row b { color: #fff; text-align: right; }
+.paybox-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+.paybox-note { font-size: 12px; color: #7ee2a8; min-height: 16px; }
+
 .kbd { background: #0a1a30; border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: 13px; color: #cfe0f5; }
 
 @media (max-width: 860px) {

@@ -26,7 +26,17 @@
   </div>
 
   <h2>Шаг 1. Переведите сумму</h2>
-  <p>По СБП по номеру <span class="kbd">+7 923 493-26-88</span> — получатель <b>Воробьев Евгений Александрович</b>, банк <b>Сбербанк</b>. В комментарии укажите почту, на которую прислать ключ.</p>
+  <div class="paybox">
+    <div class="paybox-row"><span>К оплате</span><b id="pay-amount">199 ₽</b></div>
+    <div class="paybox-row"><span>По СБП на номер</span><b id="pay-phone">+7 923 493-26-88</b></div>
+    <div class="paybox-row"><span>Получатель</span><b>Воробьев Евгений Александрович</b></div>
+    <div class="paybox-row"><span>Банк</span><b>Сбербанк</b></div>
+    <div class="paybox-actions">
+      <button class="btn btn-gold btn-sm" id="copy-phone" type="button">Скопировать номер</button>
+      <button class="btn btn-ghost btn-sm" id="copy-amount" type="button">Скопировать сумму</button>
+    </div>
+    <div id="copy-note" class="paybox-note"></div>
+  </div>
   <p style="font-size:13px;color:#6f87a6">Самозанятый: Воробьев Евгений Александрович, ИНН 422194497805. Чек формируется в приложении «Мой налог».</p>
 
   <h2>Шаг 2. Пришлите подтверждение</h2>
@@ -49,20 +59,57 @@
 </footer>
 
 <script>
-  // Подставляем актуальную цену и тариф из ссылки (?plan=year)
   var params = new URLSearchParams(location.search);
-  var plan = params.get('plan') === 'year' ? 'год' : 'месяц';
-  var mail = document.getElementById('mail');
-  mail.href = 'mailto:hello@gadget-nakhodki.ru?subject=' + encodeURIComponent('Оплата Маркет-Снайпер — ' + plan);
+  var isYear = params.get('plan') === 'year';
+  var planName = isYear ? 'год' : 'месяц';
+  var amount = isYear ? 1990 : 199;
 
+  function fmt(value) { return new Intl.NumberFormat('ru-RU').format(value) + ' ₽'; }
+
+  function renderAmount() {
+    document.getElementById('pay-amount').textContent = fmt(amount);
+  }
+
+  function updateMail() {
+    var mail = document.getElementById('mail');
+    var body = 'Оплатил ' + fmt(amount) + ' (' + planName + '). Почта для ключа: ';
+    mail.href = 'mailto:hello@gadget-nakhodki.ru' +
+      '?subject=' + encodeURIComponent('Оплата Маркет-Снайпер — ' + planName + ', ' + fmt(amount)) +
+      '&body=' + encodeURIComponent(body);
+  }
+
+  function copy(text, message) {
+    var note = document.getElementById('copy-note');
+    function done() {
+      note.textContent = message;
+      setTimeout(function () { note.textContent = ''; }, 2500);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () { window.prompt('Скопируйте вручную:', text); });
+    } else {
+      window.prompt('Скопируйте вручную:', text);
+    }
+  }
+
+  document.getElementById('copy-phone').addEventListener('click', function () {
+    copy('+79234932688', 'Номер скопирован: +7 923 493-26-88');
+  });
+  document.getElementById('copy-amount').addEventListener('click', function () {
+    copy(String(amount), 'Сумма скопирована: ' + fmt(amount));
+  });
+
+  renderAmount();
+  updateMail();
+
+  // Цены из API (если сайт на PHP-хостинге); на GitHub Pages просто остаются статичные.
   fetch('api/plans.php')
     .then(function (r) { return r.json(); })
     .then(function (data) {
       (data.plans || []).forEach(function (p) {
-        document.querySelectorAll('[data-price="' + p.plan + '"]').forEach(function (el) {
-          el.textContent = new Intl.NumberFormat('ru-RU').format(p.price) + ' ₽';
-        });
+        if ((p.plan === 'year') === isYear) { amount = p.price; }
       });
+      renderAmount();
+      updateMail();
     })
     .catch(function () {});
 </script>
