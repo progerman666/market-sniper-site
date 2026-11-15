@@ -11,6 +11,7 @@
 <link rel="canonical" href="https://sniper.gadget-nakhodki.ru/thanks.html">
 <link rel="stylesheet" href="styles.css">
 <script src="js/metrica.js"></script>
+<script src="js/api.js"></script>
 </head>
 <body>
 <header>
@@ -26,6 +27,13 @@
   <div class="note" style="margin:18px 0">
     Ключ доступа уже формируется и уходит письмом на адрес, который вы указали при оплате.
     Обычно это занимает 1–2 минуты.
+  </div>
+
+  <div class="note" id="key-box" style="margin:18px 0;display:none">
+    <p style="margin:0 0 8px">Ваш ключ доступа — можно скопировать и вставить в расширение:</p>
+    <p style="margin:0 0 10px"><b id="key-value" style="word-break:break-all"></b></p>
+    <button class="btn btn-gold btn-sm" id="key-copy" type="button">Скопировать ключ</button>
+    <div class="paybox-note" id="key-note"></div>
   </div>
 
   <h2>Что делать дальше</h2>
@@ -60,5 +68,56 @@
 <footer>
   <div class="wrap">© 2026 Маркет-Снайпер. Самозанятый: Воробьев Евгений Александрович, ИНН 422194497805.</div>
 </footer>
+
+<script>
+  // Ключ по номеру платежа: buy.html запоминает id перед переходом в ЮKassa,
+  // здесь забираем статус у Worker'а и показываем ключ (и письмом он тоже уходит).
+  (function () {
+    var api = String(window.MS_API || '').replace(/\/+$/, '');
+    var id = '';
+    try { id = localStorage.getItem('ms_last_payment') || ''; } catch (e) { id = ''; }
+    if (!api || !id) return;
+
+    var box = document.getElementById('key-box');
+    var value = document.getElementById('key-value');
+    var note = document.getElementById('key-note');
+
+    function showKey(key) {
+      box.style.display = '';
+      value.textContent = key;
+      note.textContent = 'Ключ также отправлен письмом на указанную почту.';
+    }
+
+    function poll(tries) {
+      fetch(api + '/api/pay/status?id=' + encodeURIComponent(id))
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data && data.status === 'paid' && data.key) { showKey(data.key); return; }
+          if (data && data.status === 'pending' && tries > 0) {
+            box.style.display = '';
+            note.textContent = 'Оплата ещё обрабатывается — обновляем статус…';
+            setTimeout(function () { poll(tries - 1); }, 3000);
+            return;
+          }
+          box.style.display = 'none';
+        })
+        .catch(function () { box.style.display = 'none'; });
+    }
+
+    document.getElementById('key-copy').addEventListener('click', function () {
+      var text = value.textContent;
+      if (!text) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          note.textContent = 'Ключ скопирован.';
+        }, function () { window.prompt('Скопируйте ключ:', text); });
+      } else {
+        window.prompt('Скопируйте ключ:', text);
+      }
+    });
+
+    poll(10);
+  })();
+</script>
 </body>
 </html>

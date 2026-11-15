@@ -17,6 +17,7 @@
 <link rel="canonical" href="https://sniper.gadget-nakhodki.ru/buy.html">
 <link rel="stylesheet" href="styles.css">
 <script src="js/metrica.js"></script>
+<script src="js/api.js"></script>
 </head>
 <body>
 <header>
@@ -173,7 +174,15 @@
     note.textContent = 'Создаём платёж…';
     button.disabled = true;
 
-    fetch('api/pay.php', {
+    var api = String(window.MS_API || '').replace(/\/+$/, '');
+    if (!api) {
+      button.disabled = false;
+      note.className = 'paybox-note is-error';
+      note.textContent = 'Онлайн-оплата недоступна — переведите по СБП ниже.';
+      return;
+    }
+
+    fetch(api + '/api/pay', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ plan: plan, email: email })
@@ -182,6 +191,7 @@
     }).then(function (result) {
       if (result.ok && result.data.confirmation_url) {
         note.textContent = 'Переходим на страницу оплаты…';
+        try { localStorage.setItem('ms_last_payment', result.data.payment_id); } catch (e) { /* приватный режим */ }
         location.href = result.data.confirmation_url;
         return;
       }
