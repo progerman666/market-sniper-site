@@ -13,8 +13,17 @@
 <meta property="og:site_name" content="Маркет-Снайпер">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Маркет-Снайпер — прибыль с продажи на карточке Маркета">
+<meta name="twitter:description" content="Расширение показывает, сколько вы реально заработаете с товара: минус комиссия Маркета, доставка, реклама и закупка.">
+<meta name="twitter:image" content="https://sniper.gadget-nakhodki.ru/img/badge.png">
+<meta property="og:image:width" content="1560">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="Плашка «Прибыль с продажи» под ценой товара на Яндекс.Маркете">
+<meta name="color-scheme" content="light">
 <meta name="theme-color" content="#0b1f3a">
 <link rel="icon" href="img/icon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<link rel="preconnect" href="https://mc.yandex.ru" crossorigin>
 <link rel="canonical" href="https://sniper.gadget-nakhodki.ru/">
 <link rel="stylesheet" href="styles.css">
 <!-- Яндекс.Вебмастер и Google Search Console: раскомментируйте свой тег подтверждения прав. -->
@@ -32,6 +41,8 @@
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Windows, macOS, Linux",
       "inLanguage": "ru-RU",
+      "softwareVersion": "0.4.1",
+      "screenshot": "https://sniper.gadget-nakhodki.ru/img/badge.png",
       "description": "Расширение для Edge, Chrome и Яндекс.Браузера показывает прибыль с продажи прямо на карточке товара Яндекс.Маркета: комиссия, доставка, реклама и себестоимость.",
       "featureList": [
         "Прибыль с продажи под ценой на карточке товара",
@@ -45,6 +56,8 @@
         "highPrice": "1990",
         "priceCurrency": "RUB",
         "offerCount": "2",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
         "url": "https://sniper.gadget-nakhodki.ru/buy.html"
       },
       "publisher": { "@type": "Organization", "name": "Маркет-Снайпер", "url": "https://sniper.gadget-nakhodki.ru/" }
@@ -54,6 +67,21 @@
       "name": "Маркет-Снайпер",
       "url": "https://sniper.gadget-nakhodki.ru/",
       "inLanguage": "ru-RU"
+    },
+    {
+      "@type": "Organization",
+      "name": "Маркет-Снайпер",
+      "url": "https://sniper.gadget-nakhodki.ru/",
+      "logo": "https://sniper.gadget-nakhodki.ru/img/icon.png",
+      "email": "goinslims@gmail.com",
+      "taxID": "422194497805",
+      "founder": { "@type": "Person", "name": "Воробьев Евгений Александрович" },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "goinslims@gmail.com",
+        "availableLanguage": "Russian"
+      }
     },
     {
       "@type": "FAQPage",
@@ -98,7 +126,7 @@
 
 <header>
   <div class="wrap header-inner">
-    <a class="logo" href="./"><img src="img/icon.png" alt=""> Маркет-Снайпер</a>
+    <a class="logo" href="./"><img src="img/icon.png" alt="" width="32" height="32"> Маркет-Снайпер</a>
     <nav>
       <a href="#how">Как работает</a>
       <a href="#price">Цена</a>
@@ -124,7 +152,7 @@
       <div class="hero-note">7 дней полного доступа, без карты и регистрации. Браузер: Microsoft Edge, Chrome, Яндекс.Браузер. <span id="cta-note">Скоро в каталоге Edge — установка в один клик.</span></div>
     </div>
     <div class="hero-shot">
-      <img src="img/badge.png" alt="Блок «Прибыль с продажи» под ценой товара на Яндекс.Маркете">
+      <img src="img/badge.png" alt="Блок «Прибыль с продажи» под ценой товара на Яндекс.Маркете" width="1560" height="800" fetchpriority="high" decoding="async">
     </div>
   </section>
 
@@ -146,7 +174,7 @@
       </div>
     </div>
     <div style="margin-top:26px">
-      <img src="img/popup.png" alt="Окно расширения с расчётом прибыли" style="max-width:380px;width:100%;border-radius:14px;border:1px solid var(--line)">
+      <img src="img/popup.png" alt="Окно расширения с расчётом прибыли" width="768" height="2144" loading="lazy" decoding="async" style="max-width:380px;width:100%;border-radius:14px;border:1px solid var(--line)">
     </div>
   </section>
 
@@ -285,6 +313,7 @@
       <a href="offer.html">Публичная оферта</a>
       <a href="kalkulyator-pribyli.html">Калькулятор прибыли</a>
       <a href="buy.html">Оплата</a>
+      <a href="about.html">О проекте</a>
       <a href="mailto:goinslims@gmail.com">goinslims@gmail.com</a>
     </div>
     <div>Самозанятый: Воробьев Евгений Александрович, ИНН 422194497805. © 2026 Маркет-Снайпер.</div>
