@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="utf-8">
@@ -29,15 +29,33 @@
 <main class="wrap doc">
   <h1>Оплата и получение ключа</h1>
 
-  <p>Оплата проходит по СБП — переводите с любого банка, комиссии для вас нет. Ключ приходит на почту в течение 2 часов (обычно 10–15 минут).</p>
+  <p>Оплата картой или переводом — ключ приходит на почту автоматически, обычно за 1–2 минуты. Если удобнее переводом по СБП на номер, это тоже возможно: тогда ключ отправим вручную в течение 2 часов.</p>
 
   <div class="note" style="margin:18px 0">
     Сейчас цена: <b><span data-price="month">199 ₽</span></b> за месяц или
     <b><span data-price="year">1 990 ₽</span></b> за год (два месяца в подарок).
   </div>
 
-  <h2>Шаг 1. Переведите сумму</h2>
-  <div class="paybox">
+  <h2>Шаг 1. Оплатите онлайн</h2>
+  <form class="paybox pay-form" id="pay-form" novalidate>
+    <label>Тариф
+      <select id="pay-plan" name="plan">
+        <option value="month">Месяц — 199 ₽</option>
+        <option value="year">Год — 1 990 ₽ (два месяца в подарок)</option>
+      </select>
+    </label>
+    <label>E-mail для ключа
+      <input id="pay-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="buyer@mail.ru" required>
+    </label>
+    <button class="btn btn-gold" id="pay-submit" type="submit" data-goal="pay_online">
+      Оплатить <span id="pay-button-amount">199 ₽</span>
+    </button>
+    <div class="paybox-note" id="pay-note">Ключ придёт на указанную почту сразу после оплаты.</div>
+  </form>
+
+  <h2>Шаг 2. Или переведите по СБП</h2>
+  <p style="font-size:14px;color:var(--muted)">Этот способ — если онлайн-оплата не подошла. Ключ в этом случае высылаем вручную, обычно за 10–15 минут.</p>
+  <div class="paybox" id="sbp-block">
     <div class="paybox-row"><span>К оплате</span><b id="pay-amount">199 ₽</b></div>
     <div class="paybox-row"><span>По СБП на номер</span><b id="pay-phone">+7 923 493-26-88</b></div>
     <div class="paybox-row"><span>Получатель</span><b>Воробьев Евгений Александрович</b></div>
@@ -50,7 +68,7 @@
   </div>
   <p style="font-size:13px;color:#6f87a6">Самозанятый: Воробьев Евгений Александрович, ИНН 422194497805. Чек формируется в приложении «Мой налог».</p>
 
-  <h2>Шаг 2. Пришлите подтверждение</h2>
+  <h2>Шаг 3. Пришлите подтверждение</h2>
   <p>Нажмите кнопку — откроется письмо с уже заполненной темой. Приложите скриншот перевода и укажите тариф (месяц или год).</p>
   <p>
     <a class="btn btn-gold" id="mail" href="mailto:goinslims@gmail.com?subject=Оплата%20Маркет-Снайпер">Отправить подтверждение</a>
@@ -69,8 +87,8 @@
     </div>
   </div>
 
-  <h2>Шаг 3. Активируйте ключ</h2>
-  <p>В ответном письме придёт ключ вида <span class="kbd">MS1.…</span>. Откройте расширение → поле «Ключ доступа» → «ОК». Полная версия включится сразу, переустанавливать ничего не нужно.</p>
+  <h2>Шаг 4. Активируйте ключ</h2>
+  <p>В письме придёт ключ вида <span class="kbd">MS1.…</span>. Откройте расширение → поле «Ключ доступа» → «ОК». Полная версия включится сразу, переустанавливать ничего не нужно.</p>
 
   <h2>Чек и возврат</h2>
   <p>Чек самозанятого приходит на почту или в приложение «Мой налог» после оплаты. Если расширение не подошло — напишите в течение 7 дней, вернём деньги тем же способом, ключ аннулируем.</p>
@@ -84,21 +102,25 @@
 
 <script>
   var params = new URLSearchParams(location.search);
-  var isYear = params.get('plan') === 'year';
-  var planName = isYear ? 'год' : 'месяц';
-  var amount = isYear ? 1990 : 199;
+  var PRICES = { month: 199, year: 1990 };
+  var plan = params.get('plan') === 'year' ? 'year' : 'month';
+  var payPlan = document.getElementById('pay-plan');
 
   function fmt(value) { return new Intl.NumberFormat('ru-RU').format(value) + ' ₽'; }
+  function amount() { return PRICES[plan] || PRICES.month; }
+  function planName() { return plan === 'year' ? 'год' : 'месяц'; }
 
   function renderAmount() {
-    document.getElementById('pay-amount').textContent = fmt(amount);
+    payPlan.value = plan;
+    document.getElementById('pay-amount').textContent = fmt(amount());
+    document.getElementById('pay-button-amount').textContent = fmt(amount());
   }
 
   function updateMail() {
     var mail = document.getElementById('mail');
-    var body = 'Оплатил ' + fmt(amount) + ' (' + planName + '). Почта для ключа: ';
+    var body = 'Оплатил ' + fmt(amount()) + ' (' + planName() + '). Почта для ключа: ';
     mail.href = 'mailto:goinslims@gmail.com' +
-      '?subject=' + encodeURIComponent('Оплата Маркет-Снайпер — ' + planName + ', ' + fmt(amount)) +
+      '?subject=' + encodeURIComponent('Оплата Маркет-Снайпер — ' + planName() + ', ' + fmt(amount())) +
       '&body=' + encodeURIComponent(body);
   }
 
@@ -119,11 +141,59 @@
     copy('+79234932688', 'Номер скопирован: +7 923 493-26-88');
   });
   document.getElementById('copy-amount').addEventListener('click', function () {
-    copy(String(amount), 'Сумма скопирована: ' + fmt(amount));
+    copy(String(amount()), 'Сумма скопирована: ' + fmt(amount()));
   });
 
   renderAmount();
   updateMail();
+
+  payPlan.addEventListener('change', function () {
+    plan = payPlan.value === 'year' ? 'year' : 'month';
+    renderAmount();
+    updateMail();
+  });
+
+  // Онлайн-оплата: создаём заказ на сервере и уходим на страницу оплаты провайдера.
+  // Если API недоступно (например, сайт на GitHub Pages без PHP) — предлагаем СБП.
+  document.getElementById('pay-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    var field = document.getElementById('pay-email');
+    var note = document.getElementById('pay-note');
+    var button = document.getElementById('pay-submit');
+    var email = field.value.trim();
+
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      note.className = 'paybox-note is-error';
+      note.textContent = 'Введите e-mail — на него придёт ключ.';
+      field.focus();
+      return;
+    }
+
+    note.className = 'paybox-note';
+    note.textContent = 'Создаём платёж…';
+    button.disabled = true;
+
+    fetch('api/pay.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan: plan, email: email })
+    }).then(function (response) {
+      return response.json().then(function (data) { return { ok: response.ok, data: data }; });
+    }).then(function (result) {
+      if (result.ok && result.data.confirmation_url) {
+        note.textContent = 'Переходим на страницу оплаты…';
+        location.href = result.data.confirmation_url;
+        return;
+      }
+      throw new Error(result.data.error || 'Не удалось создать платёж');
+    }).catch(function (error) {
+      button.disabled = false;
+      note.className = 'paybox-note is-error';
+      note.textContent = (error && error.message ? error.message : 'Онлайн-оплата недоступна') + ' — переведите по СБП ниже.';
+      var sbp = document.getElementById('sbp-block');
+      if (sbp && sbp.scrollIntoView) { sbp.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
 
   // MAX: покупатель открывает мессенджер, номер копируется в буфер для поиска
   var MAX_PHONE_PRETTY = '+7 923 493-26-88';
@@ -150,12 +220,12 @@
   };
   qrImage.src = 'img/sbp-qr.png';
 
-  // Цены из API (если сайт на PHP-хостинге); на GitHub Pages просто остаются статичные.
+  // Цены из API (если сайт на PHP-хостинге); на GitHub Pages остаются статичные.
   fetch('api/plans.php')
     .then(function (r) { return r.json(); })
     .then(function (data) {
       (data.plans || []).forEach(function (p) {
-        if ((p.plan === 'year') === isYear) { amount = p.price; }
+        if (PRICES[p.plan] !== undefined) { PRICES[p.plan] = p.price; }
       });
       renderAmount();
       updateMail();

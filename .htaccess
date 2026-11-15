@@ -17,4 +17,9 @@ AddDefaultCharset UTF-8
     ExpiresByType image/png "access plus 7 days"
     ExpiresByType image/svg+xml "access plus 7 days"
     ExpiresByType text/css "access plus 1 day"
+    ExpiresByType application/javascript "access plus 1 day"
+    ExpiresByType application/xml "access plus 1 hour"
 </IfModule>
+
+# 404 — своя страница (на GitHub Pages её отдаёт 404.html автоматически)
+ErrorDocument 404 /404.html

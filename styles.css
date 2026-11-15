@@ -102,6 +102,17 @@ footer .links { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 10px; 
 .paybox-row b { color: #fff; text-align: right; }
 .paybox-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
 .paybox-note { font-size: 12px; color: #7ee2a8; min-height: 16px; }
+.paybox-note.is-error { color: #ff8a80; }
+
+/* Онлайн-оплата (pay.php → ЮKassa) */
+.pay-form label { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+.pay-form input, .pay-form select {
+  width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line);
+  background: #0a1a30; color: #fff; font: inherit; font-size: 15px;
+}
+.pay-form input:focus, .pay-form select:focus { outline: none; border-color: var(--gold); }
+.pay-form .btn { margin-top: 4px; }
+.pay-form .btn[disabled] { opacity: .65; cursor: default; transform: none; }
 
 .qr-block { display: flex; gap: 18px; align-items: center; margin: 22px 0; padding: 18px; border: 1px dashed var(--line); border-radius: 14px; flex-wrap: wrap; }
 .qr-box { width: 168px; height: 168px; border-radius: 12px; background: #fff; color: #0b1f3a; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 13px; font-weight: 600; padding: 8px; }
@@ -151,3 +162,4 @@ footer .links { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 10px; 
   .calc-grid { grid-template-columns: 1fr; }
   .calc-result { position: static; }
 }
+
