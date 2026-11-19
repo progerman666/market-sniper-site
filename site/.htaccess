@@ -1,0 +1,25 @@
+Options -Indexes
+DirectoryIndex index.html
+AddDefaultCharset UTF-8
+
+# Редирект на HTTPS. Если на хостинге ещё нет SSL-сертификата — закомментируйте блок,
+# иначе сайт уйдёт в бесконечный редирект.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+
+# Кэширование статики
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/png "access plus 7 days"
+    ExpiresByType image/svg+xml "access plus 7 days"
+    ExpiresByType text/css "access plus 1 day"
+    ExpiresByType application/javascript "access plus 1 day"
+    ExpiresByType application/xml "access plus 1 hour"
+</IfModule>
+
+# 404 — своя страница (на GitHub Pages её отдаёт 404.html автоматически)
+ErrorDocument 404 /404.html

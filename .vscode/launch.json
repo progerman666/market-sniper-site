@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "AITunnel: озвучка промо-ролика",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}\\tools\\voiceover-aitunnel.js",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "AITunnel: проверка сборки без API (тишина)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}\\tools\\voiceover-aitunnel.js",
+      "args": ["--mock", "--force"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "AITunnel: озвучка тестовой фразы",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}\\tools\\tts-aitunnel.js",
+      "args": [
+        "--text",
+        "Привет! Это синтезированная речь от AITUNNEL.",
+        "--out",
+        "${workspaceFolder}\\promo\\video\\voice\\aitunnel\\test.mp3"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Оплата принята — Маркет-Снайпер</title>
+<meta name="description" content="Оплата прошла. Ключ доступа «Маркет-Снайпер» приходит на указанную почту автоматически, обычно за 1–2 минуты.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0b1f3a">
+<link rel="icon" href="img/icon.png">
+<link rel="canonical" href="https://sniper.gadget-nakhodki.ru/thanks.html">
+<link rel="stylesheet" href="styles.css?v=20261115">
+<script src="js/metrica.js?v=20261115"></script>
+<script src="js/api.js?v=20261115"></script>
+</head>
+<body>
+<header>
+  <div class="wrap header-inner">
+    <a class="logo" href="./"><img src="img/icon.png" alt=""> Маркет-Снайпер</a>
+    <nav><a href="index.html">На главную</a></nav>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <h1>Спасибо! Оплата принята</h1>
+
+  <div class="note" style="margin:18px 0">
+    Ключ доступа уже формируется и уходит письмом на адрес, который вы указали при оплате.
+    Обычно это занимает 1–2 минуты.
+  </div>
+
+  <div class="note" id="key-box" style="margin:18px 0;display:none">
+    <p style="margin:0 0 8px">Ваш ключ доступа — можно скопировать и вставить в расширение:</p>
+    <p style="margin:0 0 10px"><b id="key-value" style="word-break:break-all"></b></p>
+    <button class="btn btn-gold btn-sm" id="key-copy" type="button">Скопировать ключ</button>
+    <div class="paybox-note" id="key-note"></div>
+  </div>
+
+  <h2>Что делать дальше</h2>
+  <ol>
+    <li>Откройте письмо от «Маркет-Снайпер» — тема «Ваш ключ доступа».</li>
+    <li>Скопируйте ключ вида <span class="kbd">MS1.…</span>.</li>
+    <li>Нажмите на иконку расширения на панели браузера.</li>
+    <li>Вставьте ключ в поле «Ключ доступа» и нажмите «ОК» — полная версия включится сразу.</li>
+  </ol>
+
+  <h2>Письмо не пришло?</h2>
+  <p>
+    Проверьте папку «Спам» и «Промоакции»: письмо приходит с адреса
+    <b>no-reply@sniper.gadget-nakhodki.ru</b>. Если его нет и там — напишите на
+    <a href="mailto:goinslims@gmail.com">goinslims@gmail.com</a> и укажите номер платежа
+    из письма о платеже: вышлем ключ вручную в течение 2 часов.
+  </p>
+
+  <h2>Ещё не установили расширение?</h2>
+  <p>Скачайте архив и загрузите его в браузер — ключ можно ввести в любой момент, срок от этого не уменьшается.</p>
+  <p>
+    <a class="btn btn-gold" href="download/market-sniper-0.4.3.zip" download>Скачать расширение</a>
+    <a class="btn btn-ghost" href="index.html#install">Инструкция по установке</a>
+  </p>
+
+  <h2>Чек и возврат</h2>
+  <p>Чек самозанятого формируется в приложении «Мой налог» и приходит на почту после оплаты. Если расширение не подошло — напишите в течение 7 дней, вернём деньги тем же способом, ключ аннулируем.</p>
+
+  <p style="margin-top:24px"><a href="offer.html">Публичная оферта</a> · <a href="privacy.html">Политика конфиденциальности</a> · <a href="kalkulyator-pribyli.html">Калькулятор прибыли</a></p>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Маркет-Снайпер. Самозанятый: Воробьев Евгений Александрович, ИНН 422194497805.</div>
+</footer>
+
+<script>
+  // Ключ по номеру платежа: buy.html запоминает id перед переходом в ЮKassa,
+  // здесь забираем статус у Worker'а и показываем ключ (и письмом он тоже уходит).
+  (function () {
+    var api = String(window.MS_API || '').replace(/\/+$/, '');
+    var id = '';
+    try { id = localStorage.getItem('ms_last_payment') || ''; } catch (e) { id = ''; }
+    if (!api || !id) return;
+
+    var box = document.getElementById('key-box');
+    var value = document.getElementById('key-value');
+    var note = document.getElementById('key-note');
+
+    function showKey(key) {
+      box.style.display = '';
+      value.textContent = key;
+      note.textContent = 'Ключ также отправлен письмом на указанную почту.';
+    }
+
+    function poll(tries) {
+      fetch(api + '/api/pay/status?id=' + encodeURIComponent(id))
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data && data.status === 'paid' && data.key) { showKey(data.key); return; }
+          if (data && data.status === 'pending' && tries > 0) {
+            box.style.display = '';
+            note.textContent = 'Оплата ещё обрабатывается — обновляем статус…';
+            setTimeout(function () { poll(tries - 1); }, 3000);
+            return;
+          }
+          box.style.display = 'none';
+        })
+        .catch(function () { box.style.display = 'none'; });
+    }
+
+    document.getElementById('key-copy').addEventListener('click', function () {
+      var text = value.textContent;
+      if (!text) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          note.textContent = 'Ключ скопирован.';
+        }, function () { window.prompt('Скопируйте ключ:', text); });
+      } else {
+        window.prompt('Скопируйте ключ:', text);
+      }
+    });
+
+    poll(10);
+  })();
+</script>
+</body>
+</html>

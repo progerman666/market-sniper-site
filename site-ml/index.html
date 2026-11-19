@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ganancia ML — Lucro Líquido no Mercado Livre Brasil</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+           color: #0b1f3a; line-height: 1.6; }
+    .container { max-width: 800px; margin: 0 auto; padding: 24px; }
+    header { background: linear-gradient(135deg,#0b1f3a,#17395f); color: #fff;
+             padding: 48px 24px; text-align: center; border-radius: 0 0 16px 16px; }
+    h1 { font-size: 28px; margin-bottom: 12px; }
+    p.sub { font-size: 16px; opacity: 0.95; max-width: 600px; margin: 0 auto; }
+    .section { padding: 32px 0; }
+    h2 { font-size: 20px; margin-bottom: 16px; color: #0b1f3a; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 20px; text-align: center; }
+    .price { font-size: 26px; font-weight: 700; color: #0b7a3b; margin: 8px 0; }
+    .usdt { font-size: 14px; color: #666; }
+    .btn { display: inline-block; background: #0b1f3a; color: #fff; padding: 12px 24px;
+           border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 12px;
+           border: none; cursor: pointer; }
+    .btn:hover { background: #17395f; }
+    .usdt-box { background: #f4f6f8; border: 1px dashed #0b1f3a; border-radius: 12px;
+                padding: 20px; margin-top: 16px; text-align: center; font-family: monospace;
+                font-size: 14px; word-break: break-all; }
+    .highlight { color: #d97706; font-weight: 600; }
+    ul.check { list-style: none; margin-top: 12px; }
+    ul.check li { margin: 8px 0; padding-left: 24px; position: relative; }
+    ul.check li::before { content: "✓"; position: absolute; left: 0; color: #0b7a3b; font-weight: bold; }
+    .faq { max-width: 600px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid #eee; padding: 12px 0; cursor: pointer; }
+    .footer { text-align: center; color: #667; font-size: 13px; padding: 24px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Ganancia ML</h1>
+      <p class="sub">Saiba exatamente quanto sobra de cada venda no Mercado Livre Brasil antes de publicar.</p>
+    </header>
+
+    <div class="section">
+      <h2>Como funciona</h2>
+      <div class="grid">
+        <div class="card">
+          <div style="font-size:24px;margin-bottom:8px;">1️⃣</div>
+          <div><strong>Instale a extensão</strong></div>
+          <div style="font-size:13px;color:#666;margin-top:6px;">Adicione ao Chrome ou Edge e abra qualquer produto no mercadolivre.com.br.</div>
+        </div>
+        <div class="card">
+          <div style="font-size:24px;margin-bottom:8px;">2️⃣</div>
+          <div><strong>Veja o lucro na página</strong></div>
+          <div style="font-size:13px;color:#666;margin-top:6px;">O badge mostra "Lucro ≈ R$ X" direto no card do produto.</div>
+        </div>
+        <div class="card">
+          <div style="font-size:24px;margin-bottom:8px;">3️⃣</div>
+          <div><strong>Ajuste preços com confiança</strong></div>
+          <div style="font-size:13px;color:#666;margin-top:6px;">Comissão ML, frete, ICMS, custo do produto — tudo na sua calculadora.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>O que a extensão calcula</h2>
+      <ul class="check">
+        <li>Comissão do Mercado Livre (por categoria)</li>
+        <li>Custo fixo por unidade (se abaixo do limite)</li>
+        <li>Frete (Mercado Envios)</li>
+        <li>Publicidade por venda</li>
+        <li>Custo do produto (compra ao fornecedor)</li>
+        <li>ICMS / impostos aproximados (você define o % do seu estado)</li>
+        <li><strong>Lucro líquido</strong> em reais, direto na página do produto</strong></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Preço</h2>
+      <div class="card">
+        <div style="font-size:14px;color:#666;">Licença vitalícia — 1 navegador</div>
+        <div class="price">R$ 22</div>
+        <div class="usdt">Pagamento apenas em criptomoeda (USDT TRC20)</div>
+        <button class="btn" onclick="location.href='pagamento.html'">Pagar com USDT e receber chave</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Perguntas frequentes</h2>
+      <div class="faq">
+        <div class="faq-item" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';">
+          <strong>Preciso de cadastro no Mercado Livre?</strong>
+        </div>
+        <div style="display:none;padding-left:20px;color:#555;">Não. A extensão lê o preço da página pública do produto. Você não precisa logar no ML.</div>
+
+        <div class="faq-item" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';">
+          <strong>Como recebo a chave de acesso?</strong>
+        </div>
+        <div style="display:none;padding-left:20px;color:#555;">Após confirmação do pagamento em USDT, a chave é gerada e mostrada na tela. Guarde-a — ela ativa a versão completa na extensão.</div>
+
+        <div class="faq-item" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';">
+          <strong>Funciona em outros países?</strong>
+        </div>
+        <div style="display:none;padding-left:20px;color:#555;">Esta versão é focada no Mercado Livre Brasil (mercadolivre.com.br, moeda R$). Outros países exigem ajuste de seletores e taxas.</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Ganancia ML — ferramenta para vendedores do Mercado Livre Brasil.<br>
+      Não é produto oficial do Mercado Livre.
+    </div>
+  </div>
+</body>
+</html>

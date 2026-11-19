@@ -1,0 +1,35 @@
+# Запрещаем отдавать конфиг, ключи и журналы в браузер.
+Options -Indexes
+
+<IfModule mod_authz_core.c>
+    <FilesMatch "^(config\.php|helpers\.php)$">
+        Require all denied
+    </FilesMatch>
+    <FilesMatch "\.(pem|log|json)$">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+    <FilesMatch "^(config\.php|helpers\.php|.*\.(pem|log|json))$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</IfModule>
+
+# Кодировка ответов по умолчанию
+AddDefaultCharset UTF-8
+
+# --- Ключи ЮKassa ---------------------------------------------------------
+# Впишите свои значения и УБЕРИТЕ символ # в начале строки, иначе строка
+# останется комментарием и PHP ничего не увидит.
+# shopId — число из кабинета yookassa.ru (Настройки → Магазин, Shop ID).
+# secret — ключ из «Настройки → API-ключи → Выпустить ключ» (live_… или test_…).
+# Номер кошелька ЮMoney (41001…) сюда НЕ подходит: это другой продукт.
+# ВАЖНО: ключ, который попадал в переписку, скриншоты или репозиторий,
+# считается скомпрометированным — перевыпустите его в кабинете ЮKassa.
+# Значения заданы в config.php (shop_id и secret_key). Этот шаблон оставлен
+# на случай переноса ключей в переменные окружения: тогда уберите "# " в начале
+# строк и продублируйте те же значения в панели хостинга.
+# SetEnv MS_YOOKASSA_SHOP_ID 1529556
+# SetEnv MS_YOOKASSA_SECRET_KEY live_xxxxxxxxxxxxxxxxxxxxxxxx

@@ -1,0 +1,45 @@
+{
+  "site": "https://sniper.gadget-nakhodki.ru/",
+  "landing_url": "https://sniper.gadget-nakhodki.ru/?utm_source=vk_ads&utm_medium=cpc&utm_campaign=market-sniper&utm_content=site",
+  "icon": "promo/vk-ads/icon-256x256.png",
+  "cta": "visitSite",
+  "ad_plan": {
+    "name": "Маркет-Снайпер — сайт, продажа расширения",
+    "campaign_name": "Маркет-Снайпер — сайт",
+    "status": "blocked",
+    "objective": "site_conversions",
+    "budget_limit_day": "500",
+    "budget_limit": null,
+    "date_start": null,
+    "date_end": null
+  },
+  "ad_group": {
+    "name": "Селлеры Яндекс.Маркета, 25–55",
+    "status": "blocked",
+    "objective": null,
+    "price": "15",
+    "mixing": "fastest",
+    "budget_limit_day": null,
+    "budget_limit": null,
+    "age_min": 25,
+    "age_max": 55,
+    "sex": ["male", "female"]
+  },
+  "banners": [
+    {
+      "name": "Бейдж — прибыль под ценой",
+      "title": "Прибыль на карточке Маркета",
+      "text": "Комиссия, доставка, реклама и закупка — видно, что останется. 7 дней бесплатно."
+    },
+    {
+      "name": "Оффер — 199 ₽ в месяц",
+      "title": "Считайте прибыль, а не цену",
+      "text": "Расширение показывает прибыль с продажи на карточке Яндекс.Маркета. 199 ₽ в месяц."
+    },
+    {
+      "name": "Боль — товар в минусе",
+      "title": "Товар в минусе? Видно сразу",
+      "text": "Маркет-Снайпер: прибыль и цена без убытка прямо в карточке. Установка за минуту."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "market-sniper-license",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Выдача и проверка лицензионных ключей Маркет-Снайпера (Cloudflare Worker)",
+  "scripts": {
+    "dev": "npx wrangler dev",
+    "deploy": "npx wrangler deploy",
+    "tail": "npx wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.158.0"
+  }
+}

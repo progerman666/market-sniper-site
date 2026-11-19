@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Маркет-Снайпер — расширение для расчёта прибыли на Яндекс.Маркете</title>
+<meta name="description" content="Показывает прибыль с продажи прямо на карточке товара Яндекс.Маркета: комиссия, доставка, реклама и закупка. Установка в Edge и Chrome за минуту, 7 дней бесплатно, дальше 199 ₽ в месяц.">
+<meta property="og:title" content="Маркет-Снайпер — прибыль с продажи на карточке Яндекс.Маркета">
+<meta property="og:description" content="Цена, комиссия Маркета, доставка и реклама — и сколько останется вам. Прямо на карточке товара.">
+<meta property="og:image" content="https://sniper.gadget-nakhodki.ru/img/badge.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sniper.gadget-nakhodki.ru/">
+<meta property="og:site_name" content="Маркет-Снайпер">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Маркет-Снайпер — прибыль с продажи на карточке Маркета">
+<meta name="twitter:description" content="Расширение показывает, сколько вы реально заработаете с товара: минус комиссия Маркета, доставка, реклама и закупка.">
+<meta name="twitter:image" content="https://sniper.gadget-nakhodki.ru/img/badge.png">
+<meta property="og:image:width" content="1560">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="Плашка «Прибыль с продажи» под ценой товара на Яндекс.Маркете">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b1f3a">
+<link rel="icon" href="img/icon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<link rel="preconnect" href="https://mc.yandex.ru" crossorigin>
+<link rel="canonical" href="https://sniper.gadget-nakhodki.ru/">
+<link rel="stylesheet" href="styles.css?v=20261115">
+<!-- Яндекс.Вебмастер и Google Search Console: раскомментируйте свой тег подтверждения прав. -->
+<meta name="yandex-verification" content="70fe80bdd8e22cef">
+<!-- <meta name="google-site-verification" content="XXXXXXXXXXXXXX"> -->
+<script src="js/metrica.js?v=20261115"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Маркет-Снайпер",
+      "url": "https://sniper.gadget-nakhodki.ru/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "inLanguage": "ru-RU",
+      "softwareVersion": "0.4.3",
+      "screenshot": "https://sniper.gadget-nakhodki.ru/img/badge.png",
+      "description": "Расширение для Edge, Chrome и Яндекс.Браузера показывает прибыль с продажи прямо на карточке товара Яндекс.Маркета: комиссия, доставка, реклама и себестоимость.",
+      "featureList": [
+        "Прибыль с продажи под ценой на карточке товара",
+        "Тарифы Маркета по категориям 32–53%",
+        "Свой склад, склад Маркета и быстрая доставка",
+        "Работает офлайн, данные хранятся в браузере"
+      ],
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "199",
+        "highPrice": "1990",
+        "priceCurrency": "RUB",
+        "offerCount": "2",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://sniper.gadget-nakhodki.ru/buy.html"
+      },
+      "publisher": { "@type": "Organization", "name": "Маркет-Снайпер", "url": "https://sniper.gadget-nakhodki.ru/" }
+    },
+    {
+      "@type": "WebSite",
+      "name": "Маркет-Снайпер",
+      "url": "https://sniper.gadget-nakhodki.ru/",
+      "inLanguage": "ru-RU"
+    },
+    {
+      "@type": "Organization",
+      "name": "Маркет-Снайпер",
+      "url": "https://sniper.gadget-nakhodki.ru/",
+      "logo": "https://sniper.gadget-nakhodki.ru/img/icon.png",
+      "email": "goinslims@gmail.com",
+      "taxID": "422194497805",
+      "founder": { "@type": "Person", "name": "Воробьев Евгений Александрович" },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "goinslims@gmail.com",
+        "availableLanguage": "Russian"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Нужно ли ИП или регистрация?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Для установки — нет. Покупка оформляется как обычная услуга, чек приходит от самозанятого. Данные карты мы не храним." }
+        },
+        {
+          "@type": "Question",
+          "name": "Какие данные вы собираете?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Расчёт и настройки хранятся только в браузере. На сервер уходит только запрос при активации ключа — чтобы проверить его срок. На сайте работает Яндекс.Метрика — обезличенная статистика посещений, как описано в политике конфиденциальности." }
+        },
+        {
+          "@type": "Question",
+          "name": "Работает ли без интернета?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Да. Ключ проверяется по подписи локально, поэтому расчёт прибыли работает и при плохой связи." }
+        },
+        {
+          "@type": "Question",
+          "name": "Что будет, когда закончится пробный период?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Расширение не отключится: останется базовый расчёт по ставке 42% и доставке 100 ₽ плюс поле для ключа. После оплаты всё возвращается, настройки не теряются." }
+        },
+        {
+          "@type": "Question",
+          "name": "Если не подошло — вернёте деньги?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Да, в течение 7 дней после оплаты. Напишите на почту из реквизитов — вернём тем же способом, ключ аннулируем." }
+        },
+        {
+          "@type": "Question",
+          "name": "Поддерживается ли Яндекс.Браузер?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Да, он на том же движке: browser://extensions → «Режим разработчика» → «Загрузить распакованное»." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="logo" href="./"><img src="img/icon.png" alt="" width="32" height="32"> Маркет-Снайпер</a>
+    <nav>
+      <a href="#how">Как работает</a>
+      <a href="#price">Цена</a>
+      <a href="kalkulyator-pribyli.html">Калькулятор</a>
+      <a href="#install">Установка</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <a class="btn btn-gold btn-sm" href="download/market-sniper-0.4.3.zip">Скачать</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div>
+      <h1>Прибыль с продажи — прямо на карточке Маркета</h1>
+      <p>Расширение считает, сколько вы реально заработаете с товара: минус комиссия Маркета, доставка, реклама и закупка. Прямо на странице — без таблиц и калькуляторов.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" id="cta-main" href="download/market-sniper-0.4.3.zip">Скачать бесплатно</a>
+        <a class="btn btn-ghost" href="kalkulyator-pribyli.html">Калькулятор прибыли</a>
+        <a class="btn btn-ghost" href="#price">Сколько стоит</a>
+      </div>
+      <div class="hero-note">7 дней полного доступа, без карты и регистрации. Браузер: Microsoft Edge, Chrome, Яндекс.Браузер. <span id="cta-note">Скоро в каталоге Edge — установка в один клик.</span></div>
+    </div>
+    <div class="hero-shot">
+      <img src="img/badge.png" alt="Блок «Прибыль с продажи» под ценой товара на Яндекс.Маркете" width="1560" height="800" style="height:auto" fetchpriority="high" decoding="async">
+    </div>
+  </section>
+
+  <section class="section" id="what">
+    <h2>Что вы видите на карточке</h2>
+    <p class="lead">Плашка под ценой и подробный расчёт в окне расширения. Все цифры — на русском, без аббревиатур.</p>
+    <div class="grid3">
+      <div class="card">
+        <h3>Прибыль сразу</h3>
+        <p>Из цены вычитаются комиссия Маркета, доставка, реклама и закупка. Видно и сумму, и сколько процентов цены остаётся вам.</p>
+      </div>
+      <div class="card">
+        <h3>Тарифы как у Маркета</h3>
+        <p>Кнопка «Тариф Маркета» подставляет официальный процент по категории (32–53%) и оценку доставки.</p>
+      </div>
+      <div class="card">
+        <h3>Понятно без обучения</h3>
+        <p>Вместо FBY/FBS/DBS — «товар на складе Маркета», «свой склад, доставка Маркета», «свой склад и своя доставка».</p>
+      </div>
+    </div>
+    <div style="margin-top:26px">
+      <img src="img/popup.png" alt="Окно расширения с расчётом прибыли" width="768" height="1024" loading="lazy" decoding="async" style="max-width:380px;width:100%;height:auto;border-radius:14px;border:1px solid var(--line)">
+      <p class="hero-note" style="margin-top:10px">Показаны первые строки расчёта. <a href="img/popup-full.png" target="_blank" rel="noopener">Открыть окно расширения целиком</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <h2>Как работает</h2>
+    <p class="lead">Три шага, ничего настраивать не нужно.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>Установите расширение</h3>
+        <p>Скачайте архив и подключите его в Edge. Инструкция — ниже, занимает минуту.</p>
+      </div>
+      <div class="step">
+        <h3>Откройте карточку товара</h3>
+        <p>На любой странице товара под ценой появится плашка с чистой прибылью.</p>
+      </div>
+      <div class="step">
+        <h3>Подставьте свои ставки</h3>
+        <p>В окне расширения укажите категорию, доставку и рекламу — расчёт пересчитается сразу.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="calc-teaser">
+    <h2>Посчитайте прибыль до установки</h2>
+    <p class="lead">Бесплатный калькулятор: цена, категория, доставка и реклама — и вы увидите прибыль с одной продажи и маржу. Без регистрации, по официальным тарифам Маркета.</p>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="kalkulyator-pribyli.html">Открыть калькулятор</a>
+      <a class="btn btn-ghost" href="#price">Сколько стоит расширение</a>
+    </div>
+  </section>
+
+  <section class="section" id="price">
+    <h2>Цена</h2>
+    <p class="lead">Начинаем с минимальной цены: чем больше продавцов пользуется, тем быстрее появляются новые функции. Купившим сейчас цена не повышается.</p>
+    <div class="price">
+      <div class="plan">
+        <h3>Пробный период</h3>
+        <div class="amount">0 ₽</div>
+        <ul>
+          <li>7 дней полного доступа</li>
+          <li>Все ставки и категории</li>
+          <li>Без карты и регистрации</li>
+        </ul>
+        <a class="btn btn-ghost" href="download/market-sniper-0.4.3.zip">Скачать</a>
+      </div>
+
+      <div class="plan featured">
+        <span class="tag">Выбор продавцов</span>
+        <h3>Месяц</h3>
+        <div class="amount"><span data-price="month">199 ₽</span><small> / месяц</small></div>
+        <ul>
+          <li>Расчёт по тарифам Маркета</li>
+          <li>Свои доставка и реклама</li>
+          <li>Работает офлайн</li>
+          <li>Ключ активируется за минуту</li>
+        </ul>
+        <a class="btn btn-gold" href="buy.html?plan=month">Купить</a>
+      </div>
+
+      <div class="plan">
+        <h3>Год</h3>
+        <div class="amount"><span data-price="year">1 990 ₽</span><small> / год</small></div>
+        <ul>
+          <li>Всё, что в месячном</li>
+          <li>Два месяца в подарок</li>
+          <li>Цена фиксируется на год</li>
+        </ul>
+        <a class="btn btn-ghost" href="buy.html?plan=year">Купить на год</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="install">
+    <h2>Установка</h2>
+    <div class="store-cta" id="store-cta">
+      <div class="store-cta-text">
+        <b>Каталог Microsoft Edge</b>
+        <span id="store-cta-note">Скоро в каталоге Microsoft Edge. Пока — установка вручную по шагам ниже.</span>
+      </div>
+      <a class="btn btn-gold" id="store-btn" href="#install-manual">Установка вручную</a>
+    </div>
+    <p class="lead" id="install-lead">Пока каталог не открыт, расширение ставится вручную — как любой внутренний инструмент.</p>
+    <div id="install-manual">
+    <div class="steps">
+      <div class="step">
+        <h3>Скачайте и распакуйте</h3>
+        <p><a href="download/market-sniper-0.4.3.zip">market-sniper-0.4.3.zip</a> → распакуйте в постоянную папку, например <span class="kbd">D:\market-sniper</span>.</p>
+      </div>
+      <div class="step">
+        <h3>Откройте расширения</h3>
+        <p>В адресной строке: <span class="kbd">edge://extensions</span> (или <span class="kbd">chrome://extensions</span>) → включите «Режим разработчика».</p>
+      </div>
+      <div class="step">
+        <h3>Загрузите папку</h3>
+        <p>«Загрузить распакованное» → выберите папку, куда распаковали архив (внутри должен лежать <span class="kbd">manifest.json</span>).</p>
+      </div>
+    </div>
+    </div>
+    <p class="hero-note">После установки откройте любую карточку товара на market.yandex.ru — плашка появится под ценой. Если нет: нажмите «Обновить» у расширения и перезагрузите страницу.</p>
+  </section>
+
+  <section class="section" id="faq">
+    <h2>Частые вопросы</h2>
+    <details>
+      <summary>Нужно ли ИП или регистрация?</summary>
+      <p>Для установки — нет. Покупка оформляется как обычная услуга, чек приходит от самозанятого. Данные карты мы не храним.</p>
+    </details>
+    <details>
+      <summary>Какие данные вы собираете?</summary>
+      <p>Расчёт и настройки расширения хранятся только в браузере — на сервер уходит лишь запрос при активации ключа, чтобы проверить его срок. На этом сайте работает Яндекс.Метрика: обезличенная статистика посещений и кликов, без передачи данных о ваших товарах. Подробнее — в <a href="privacy.html">политике конфиденциальности</a>.</p>
+    </details>
+    <details>
+      <summary>Работает ли без интернета?</summary>
+      <p>Да. Ключ проверяется по подписи локально, поэтому расчёт прибыли работает и при плохой связи.</p>
+    </details>
+    <details>
+      <summary>Что будет, когда закончится пробный период?</summary>
+      <p>Расширение не отключится: останется базовый расчёт по ставке 42% и доставке 100 ₽ плюс поле для ключа. После оплаты всё возвращается, настройки не теряются.</p>
+    </details>
+    <details>
+      <summary>Если не подошло — вернёте деньги?</summary>
+      <p>Да, в течение 7 дней после оплаты. Напишите на почту из реквизитов — вернём тем же способом, ключ аннулируем.</p>
+    </details>
+    <details>
+      <summary>Поддерживается ли Яндекс.Браузер?</summary>
+      <p>Да, он на том же движке: <span class="kbd">browser://extensions</span> → «Режим разработчика» → «Загрузить распакованное».</p>
+    </details>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="privacy.html">Политика конфиденциальности</a>
+      <a href="offer.html">Публичная оферта</a>
+      <a href="kalkulyator-pribyli.html">Калькулятор прибыли</a>
+      <a href="buy.html">Оплата</a>
+      <a href="about.html">О проекте</a>
+      <a href="mailto:goinslims@gmail.com">goinslims@gmail.com</a>
+    </div>
+    <div>Самозанятый: Воробьев Евгений Александрович, ИНН 422194497805. © 2026 Маркет-Снайпер.</div>
+    <div style="margin-top:6px">Яндекс.Маркет — товарный знак ООО «ЯНДЕКС». Расширение не является продуктом Яндекса.</div>
+  </div>
+</footer>
+
+<script>
+  // Как только расширение опубликуют в каталоге Edge — вставить сюда ссылку вида
+  // https://microsoftedge.microsoft.com/addons/detail/<id>
+  var EDGE_STORE_URL = '';
+
+  if (EDGE_STORE_URL) {
+    var ctaMain = document.getElementById('cta-main');
+    ctaMain.href = EDGE_STORE_URL;
+    ctaMain.textContent = 'Установить из каталога Edge';
+    document.getElementById('cta-note').textContent = 'Установка в один клик и автообновления.';
+
+    var storeBtn = document.getElementById('store-btn');
+    storeBtn.href = EDGE_STORE_URL;
+    storeBtn.textContent = 'Открыть каталог Edge';
+    document.getElementById('store-cta-note').textContent = 'Установка в один клик, обновления приходят сами.';
+    document.getElementById('install-lead').textContent =
+      'Если каталог недоступен (например, из-за политики организации) — установите вручную по шагам ниже.';
+  }
+
+  // Цены берём из одного места — api/plans.php. Если сервер недоступен, остаются значения из разметки.
+  fetch('api/plans.php')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      (data.plans || []).forEach(function (p) {
+        document.querySelectorAll('[data-price="' + p.plan + '"]').forEach(function (el) {
+          el.textContent = new Intl.NumberFormat('ru-RU').format(p.price) + ' ₽';
+        });
+      });
+    })
+    .catch(function () { /* оставляем статические цены */ });
+</script>
+
+</body>
+</html>
+

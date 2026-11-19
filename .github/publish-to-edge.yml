@@ -1,0 +1,73 @@
+name: Edge Add-on Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-publish:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build extension zip
+        env:
+          VERSION: ${{ github.ref_name }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+          $root = Split-Path -Parent $PSScriptRoot
+          $extDir = Join-Path $root 'extension'
+          $distDir = Join-Path $root 'dist'
+
+          if (-not $Version) { throw 'Version not provided' }
+
+          $zipPath = Join-Path $distDir ("market-sniper-$Version.zip")
+
+          $files = @(
+            'manifest.json',
+            'background.js',
+            'content.js',
+            'rates.js',
+            'license.js',
+            'popup.html',
+            'popup.js',
+            '_locales/ru/messages.json',
+            'icons/icon16.png',
+            'icons/icon48.png',
+            'icons/icon128.png'
+          )
+
+          $zip = [System.IO.Compression.ZipFile]::Open($zipPath, 'Create')
+          try {
+            foreach ($rel in $files) {
+              $src = Join-Path $extDir ($rel.Replace('/', '\'))
+              if (-not (Test-Path -LiteralPath $src)) { throw "Файл не найден: $src" }
+              [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $src, $rel) | Out-Null
+            }
+          } finally { $zip.Dispose() }
+
+          Write-Host "Готово: $zipPath"
+
+      - name: Publish to Edge Add-ons
+        uses: EdgeDev/edge-webstore-upload-action@main
+        with:
+          extension_zip: dist/market-sniper-${{ github.ref_name }}.zip
+          extension_title: Маркет-Снайпер
+          extension_description: Помощь продавцам Яндекс.Маркета: расчет чистой прибыли
+          extension_visibility: Public
+          client_id: ${{ secrets.EDGE_CLIENT_ID }}
+          client_secret: ${{ secrets.EDGE_CLIENT_SECRET }}

@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Оплата и получение ключа — Маркет-Снайпер</title>
+<meta name="description" content="Оплата Маркет-Снайпер по СБП: 199 ₽ за месяц или 1 990 ₽ за год. Ключ приходит на почту в течение 2 часов, обычно за 10–15 минут. Чек от самозанятого.">
+<meta property="og:title" content="Оплата и получение ключа — Маркет-Снайпер">
+<meta property="og:description" content="Перевод по СБП, ключ на почту в течение 2 часов. Месяц — 199 ₽, год — 1 990 ₽.">
+<meta property="og:image" content="https://sniper.gadget-nakhodki.ru/img/badge.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sniper.gadget-nakhodki.ru/buy.html">
+<meta property="og:site_name" content="Маркет-Снайпер">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Оплата и получение ключа — Маркет-Снайпер">
+<meta name="twitter:description" content="Оплата картой или по СБП. Ключ приходит на почту автоматически, обычно за 1–2 минуты.">
+<meta name="twitter:image" content="https://sniper.gadget-nakhodki.ru/img/badge.png">
+<meta property="og:image:width" content="1560">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="Оплата и получение ключа «Маркет-Снайпер»">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b1f3a">
+<link rel="icon" href="img/icon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<link rel="preconnect" href="https://mc.yandex.ru" crossorigin>
+<link rel="canonical" href="https://sniper.gadget-nakhodki.ru/buy.html">
+<link rel="stylesheet" href="styles.css?v=20261115">
+<script src="js/metrica.js?v=20261115"></script>
+<script src="js/api.js?v=20261115"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Оплата и получение ключа — Маркет-Снайпер",
+      "url": "https://sniper.gadget-nakhodki.ru/buy.html",
+      "inLanguage": "ru-RU",
+      "isPartOf": { "@type": "WebSite", "name": "Маркет-Снайпер", "url": "https://sniper.gadget-nakhodki.ru/" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://sniper.gadget-nakhodki.ru/" },
+        { "@type": "ListItem", "position": 2, "name": "Оплата и получение ключа", "item": "https://sniper.gadget-nakhodki.ru/buy.html" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "Маркет-Снайпер — доступ к расширению",
+      "serviceType": "Расширение для расчёта прибыли на Яндекс.Маркете",
+      "provider": { "@type": "Organization", "name": "Маркет-Снайпер", "url": "https://sniper.gadget-nakhodki.ru/" },
+      "areaServed": "RU",
+      "offers": [
+        { "@type": "Offer", "name": "Месяц", "price": "199", "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "url": "https://sniper.gadget-nakhodki.ru/buy.html?plan=month" },
+        { "@type": "Offer", "name": "Год", "price": "1990", "priceCurrency": "RUB", "availability": "https://schema.org/InStock", "url": "https://sniper.gadget-nakhodki.ru/buy.html?plan=year" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="wrap header-inner">
+    <a class="logo" href="./"><img src="img/icon.png" alt="" width="32" height="32"> Маркет-Снайпер</a>
+    <nav><a href="index.html">На главную</a></nav>
+  </div>
+</header>
+
+<main class="wrap doc">
+  <h1>Оплата и получение ключа</h1>
+
+  <p>Оплата картой или переводом — ключ приходит на почту автоматически, обычно за 1–2 минуты. Если удобнее переводом по СБП на номер, это тоже возможно: тогда ключ отправим вручную в течение 2 часов.</p>
+
+  <div class="note" style="margin:18px 0">
+    Сейчас цена: <b><span data-price="month">199 ₽</span></b> за месяц или
+    <b><span data-price="year">1 990 ₽</span></b> за год (два месяца в подарок).
+  </div>
+
+  <h2>Шаг 1. Оплатите онлайн</h2>
+  <form class="paybox pay-form" id="pay-form" novalidate>
+    <label>Тариф
+      <select id="pay-plan" name="plan">
+        <option value="month">Месяц — 199 ₽</option>
+        <option value="year">Год — 1 990 ₽ (два месяца в подарок)</option>
+      </select>
+    </label>
+    <label>E-mail для ключа
+      <input id="pay-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="buyer@mail.ru" required>
+    </label>
+    <button class="btn btn-gold" id="pay-submit" type="submit" data-goal="pay_online">
+      Оплатить <span id="pay-button-amount">199 ₽</span>
+    </button>
+    <div class="paybox-note" id="pay-note">Ключ придёт на указанную почту сразу после оплаты.</div>
+  </form>
+
+  <h2>Шаг 2. Или переведите по СБП</h2>
+  <p style="font-size:14px;color:var(--muted)">Этот способ — если онлайн-оплата не подошла. Ключ в этом случае высылаем вручную, обычно за 10–15 минут.</p>
+  <div class="paybox" id="sbp-block">
+    <div class="paybox-row"><span>К оплате</span><b id="pay-amount">199 ₽</b></div>
+    <div class="paybox-row"><span>По СБП на номер</span><b id="pay-phone">+7 923 493-26-88</b></div>
+    <div class="paybox-row"><span>Получатель</span><b>Воробьев Евгений Александрович</b></div>
+    <div class="paybox-row"><span>Банк</span><b>Сбербанк</b></div>
+    <div class="paybox-actions">
+      <button class="btn btn-gold btn-sm" id="copy-phone" type="button">Скопировать номер</button>
+      <button class="btn btn-ghost btn-sm" id="copy-amount" type="button">Скопировать сумму</button>
+    </div>
+    <div id="copy-note" class="paybox-note"></div>
+  </div>
+  <p style="font-size:13px;color:#6f87a6">Самозанятый: Воробьев Евгений Александрович, ИНН 422194497805. Чек формируется в приложении «Мой налог».</p>
+
+  <h2>Шаг 3. Пришлите подтверждение</h2>
+  <p>Нажмите кнопку — откроется письмо с уже заполненной темой. Приложите скриншот перевода и укажите тариф (месяц или год).</p>
+  <p>
+    <a class="btn btn-gold" id="mail" href="mailto:goinslims@gmail.com?subject=Оплата%20Маркет-Снайпер">Отправить подтверждение</a>
+  </p>
+
+  <div class="qr-block">
+    <div class="qr-box" id="qr-box">
+      <!-- Сюда подставляется img/sbp-qr.png (QR из приложения банка) -->
+      QR-код СБП<br><span class="qr-hint">появится, как только добавим картинку</span>
+    </div>
+    <div class="qr-text">
+      <h3 style="color:#fff;font-size:16px;margin-bottom:6px">Ещё быстрее — по QR-коду</h3>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:10px">Откройте приложение банка → «Оплата по QR» → отсканируйте код. Номер и получатель подставятся сами — останется ввести сумму.</p>
+      <a class="btn btn-ghost btn-sm" id="max" href="https://web.max.ru/" target="_blank" rel="noopener">Написать в MAX — +7 923 493-26-88</a>
+      <div class="paybox-note" id="max-note"></div>
+    </div>
+  </div>
+
+  <h2>Шаг 4. Активируйте ключ</h2>
+  <p>В письме придёт ключ вида <span class="kbd">MS1.…</span>. Откройте расширение → поле «Ключ доступа» → «ОК». Полная версия включится сразу, переустанавливать ничего не нужно.</p>
+
+  <h2>Чек и возврат</h2>
+  <p>Чек самозанятого приходит на почту или в приложение «Мой налог» после оплаты. Если расширение не подошло — напишите в течение 7 дней, вернём деньги тем же способом, ключ аннулируем.</p>
+
+  <p style="margin-top:24px"><a href="offer.html">Публичная оферта</a> · <a href="privacy.html">Политика конфиденциальности</a> · <a href="kalkulyator-pribyli.html">Калькулятор прибыли</a></p>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Маркет-Снайпер. Самозанятый: Воробьев Евгений Александрович, ИНН 422194497805.</div>
+</footer>
+
+<script>
+  var params = new URLSearchParams(location.search);
+  var PRICES = { month: 199, year: 1990 };
+  var plan = params.get('plan') === 'year' ? 'year' : 'month';
+  var payPlan = document.getElementById('pay-plan');
+
+  function fmt(value) { return new Intl.NumberFormat('ru-RU').format(value) + ' ₽'; }
+  function amount() { return PRICES[plan] || PRICES.month; }
+  function planName() { return plan === 'year' ? 'год' : 'месяц'; }
+
+  function renderAmount() {
+    payPlan.value = plan;
+    document.getElementById('pay-amount').textContent = fmt(amount());
+    document.getElementById('pay-button-amount').textContent = fmt(amount());
+  }
+
+  function updateMail() {
+    var mail = document.getElementById('mail');
+    var body = 'Оплатил ' + fmt(amount()) + ' (' + planName() + '). Почта для ключа: ';
+    mail.href = 'mailto:goinslims@gmail.com' +
+      '?subject=' + encodeURIComponent('Оплата Маркет-Снайпер — ' + planName() + ', ' + fmt(amount())) +
+      '&body=' + encodeURIComponent(body);
+  }
+
+  function copy(text, message) {
+    var note = document.getElementById('copy-note');
+    function done() {
+      note.textContent = message;
+      setTimeout(function () { note.textContent = ''; }, 2500);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () { window.prompt('Скопируйте вручную:', text); });
+    } else {
+      window.prompt('Скопируйте вручную:', text);
+    }
+  }
+
+  document.getElementById('copy-phone').addEventListener('click', function () {
+    copy('+79234932688', 'Номер скопирован: +7 923 493-26-88');
+  });
+  document.getElementById('copy-amount').addEventListener('click', function () {
+    copy(String(amount()), 'Сумма скопирована: ' + fmt(amount()));
+  });
+
+  renderAmount();
+  updateMail();
+
+  payPlan.addEventListener('change', function () {
+    plan = payPlan.value === 'year' ? 'year' : 'month';
+    renderAmount();
+    updateMail();
+  });
+
+  // Онлайн-оплата: создаём заказ на сервере и уходим на страницу оплаты провайдера.
+  // Если API недоступно (например, сайт на GitHub Pages без PHP) — предлагаем СБП.
+  document.getElementById('pay-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    var field = document.getElementById('pay-email');
+    var note = document.getElementById('pay-note');
+    var button = document.getElementById('pay-submit');
+    var email = field.value.trim();
+
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      note.className = 'paybox-note is-error';
+      note.textContent = 'Введите e-mail — на него придёт ключ.';
+      field.focus();
+      return;
+    }
+
+    note.className = 'paybox-note';
+    note.textContent = 'Создаём платёж…';
+    button.disabled = true;
+
+    var api = String(window.MS_API || '').replace(/\/+$/, '');
+    if (!api) {
+      button.disabled = false;
+      note.className = 'paybox-note is-error';
+      note.textContent = 'Онлайн-оплата недоступна — переведите по СБП ниже.';
+      return;
+    }
+
+    fetch(api + '/api/pay', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan: plan, email: email })
+    }).then(function (response) {
+      return response.json().then(function (data) { return { ok: response.ok, data: data }; });
+    }).then(function (result) {
+      if (result.ok && result.data.confirmation_url) {
+        note.textContent = 'Переходим на страницу оплаты…';
+        try { localStorage.setItem('ms_last_payment', result.data.payment_id); } catch (e) { /* приватный режим */ }
+        location.href = result.data.confirmation_url;
+        return;
+      }
+      throw new Error(result.data.error || 'Не удалось создать платёж');
+    }).catch(function (error) {
+      button.disabled = false;
+      note.className = 'paybox-note is-error';
+      note.textContent = (error && error.message ? error.message : 'Онлайн-оплата недоступна') + ' — переведите по СБП ниже.';
+      var sbp = document.getElementById('sbp-block');
+      if (sbp && sbp.scrollIntoView) { sbp.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // MAX: покупатель открывает мессенджер, номер копируется в буфер для поиска
+  var MAX_PHONE_PRETTY = '+7 923 493-26-88';
+  document.getElementById('max').addEventListener('click', function () {
+    var note = document.getElementById('max-note');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText('+79234932688').then(function () {
+        note.textContent = 'Номер скопирован — найдите нас в MAX по номеру ' + MAX_PHONE_PRETTY;
+      }, function () {
+        note.textContent = 'Найдите нас в MAX по номеру ' + MAX_PHONE_PRETTY;
+      });
+    } else {
+      note.textContent = 'Найдите нас в MAX по номеру ' + MAX_PHONE_PRETTY;
+    }
+  });
+
+  // QR-код СБП: если в img/ лежит sbp-qr.png — показываем его вместо заглушки
+  var qrImage = new Image();
+  qrImage.alt = 'QR-код для оплаты по СБП';
+  qrImage.onload = function () {
+    var box = document.getElementById('qr-box');
+    box.textContent = '';
+    box.appendChild(qrImage);
+  };
+  qrImage.src = 'img/sbp-qr.png';
+
+  // Цены из API (если сайт на PHP-хостинге); на GitHub Pages остаются статичные.
+  fetch('api/plans.php')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      (data.plans || []).forEach(function (p) {
+        if (PRICES[p.plan] !== undefined) { PRICES[p.plan] = p.price; }
+      });
+      renderAmount();
+      updateMail();
+    })
+    .catch(function () {});
+</script>
+</body>
+</html>
